@@ -1,0 +1,30 @@
+@import "../varible.scss";
+
+$wid-hei: 60px;
+.control--box {
+  display: flex;
+  justify-content: space-between;
+  min-width: 459px;
+  &__button {
+    align-items: center;
+    display: flex;
+    button {
+      background: none;
+      border: none;
+      box-shadow: 0 0 7px  $color-grey-shadow;
+      width: $wid-hei;
+      height: $wid-hei;
+      border-radius: 50%;
+    }
+    span {
+      padding-left: 10px;
+    }
+  }
+  .add button{
+    background: url("../../assets/plass.png") no-repeat center;
+  }
+  .update button{
+    background: url("../../assets/update.png") no-repeat center;
+  }
+
+}
