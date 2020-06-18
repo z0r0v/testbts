@@ -1,6 +1,9 @@
 @import "../varible.scss";
+
 body {
   font-size: $fz;
+  font-family: $ff;
+  font-weight: 400;
 }
 .app-box {
   max-width: 1920px;

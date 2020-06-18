@@ -1,72 +1,108 @@
 <template>
   <div>
-    <table class="table">
+    <table id="table_id" class="display">
       <thead>
       <tr>
-        <th>Номер строки</th>
-        <th>Буквенный код валюты</th>
-        <th>Наименование валюты</th>
-        <th>Количество единиц валюты</th>
-        <th>Курс к бел. рублю</th>
+        <th v-on:click="chengeArov()">{{numberCurrency}}<img src="../../assets/arovdown.png" alt=""></th>
+        <th>{{codСurrency}}</th>
+        <th>{{nameСurrency}}</th>
+        <th>{{valСurrency}}</th>
+        <th>{{exchangeRate}}</th>
+        <th class="butttons"></th>
       </tr>
       </thead>
-      <!--      это должно формироваться автоматом из полученных данных-->
       <tbody>
       <tr>
-        <th>1</th>
-        <td>RU</td>
-        <td>Российский рубль</td>
-        <td>100</td>
-        <td>3.4020</td>
-        <td>
-          <button-plus></button-plus>
-          <button-del></button-del>
-        </td>
-      </tr>
-      <tr>
-        <th>2</th>
-        <td>RU</td>
-        <td>Российский рубль</td>
-        <td>100</td>
-        <td>3.4020</td>
-        <td>
-          <button-plus></button-plus>
-          <button-del></button-del>
-        </td>
-      </tr>
-      <tr>
-        <th>3</th>
-        <td>RU</td>
-        <td>Российский рубль</td>
-        <td>100</td>
-        <td>3.4020</td>
-        <td>
-          <button-plus></button-plus>
-          <button-del></button-del>
-        </td>
+        <td>Row 1 Data 1</td>
+        <td>Row 1 Data 2</td>
+        <td>Row 1 Data 3</td>
+        <td>Row 1 Data 4</td>
+        <td>Row 1 Data 5</td>
+        <td>Row 1 Data 6</td>
       </tr>
       </tbody>
-      <!--      это должно формироваться автоматом из полученных данных-->
     </table>
+    <div class="border"></div>
   </div>
 </template>
 <script>
-    import buttonPlus from "../button-plus/button-plus.vue";
-    import buttonDel from "../button-del/button-del";
+    import * as $ from 'jquery';
+    import * as dt from 'datatables.net';
+    const url = 'https://cors-anywhere.herokuapp.com/https://www.cbr-xml-daily.ru/daily_json.js';
+    const data = [];
+    let i = 1;
+    const buttons =  "<button class='button-del'></button>" +
+        "<button class='button-plus'></button>";
+
+    const getCurses = (url) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url, false);
+        try {
+            xhr.send();
+            if (xhr.status != 200) {
+                alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+            } else {
+                return xhr.response;
+            }
+        } catch (err) {
+            alert("Запрос не удался");
+        }
+    };
+
+    const getRandomArbitrary = (min, max) => {
+        return Math.random() * (max - min) + min;
+    };
+
+    const dadaParse = JSON.parse(getCurses(url));
+
+    $.each(dadaParse.Valute, function (index, elem) {
+        let randomValue = parseInt((getRandomArbitrary(100, 800) * 100) / 100);
+        data.push([
+            i++,
+            elem.CharCode,
+            elem.Name,
+            randomValue,
+            elem.Value,
+            buttons
+        ])
+    });
+    $(document).ready(function () {
+        $('#table_id').DataTable(
+            {
+                data: data,
+
+            }
+        );
+    });
+
+    const img = '../../assets/arovdown.png';
 
     export default {
         data() {
             return {
-                carName: 'Ford',
-                carYear: 2015,
+                numberCurrency: 'Номер строки',
+                codСurrency: 'Буквенный код валюты',
+                nameСurrency:'Наименование валюты',
+                valСurrency:"Количество единиц валюты",
+                exchangeRate: "Курс к бел. рублю",
             }
         },
-        components: {
-            buttonPlus: buttonPlus,
-            buttonDel: buttonDel,
+        methods: {
+            chengeArov: function () {
+
+
+
+
+
+
+
+            },
         }
     }
 </script>
 <style lang="scss">
   @import 'lists.scss';
+
+
+
 </style>
