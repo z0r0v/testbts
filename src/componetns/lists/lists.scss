@@ -50,7 +50,7 @@
 #table_id_filter {
   display: flex;
   justify-content: flex-end;
-  top: -39px;
+  top: -60px;
   right: 18px;
   position: relative;
 
@@ -65,7 +65,9 @@
     transform: translate(-50%, 0);
   }
   input{
-    width: 540px;
+    width: 70%;
+    max-width: 540px;
+    min-width: 310px;
     height: 60px;
     margin-left: 20px;
     border: none;
@@ -78,5 +80,28 @@
   height: 50px;
   box-shadow: inset 0px 2px 7px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
+}
+
+.sorting, .sorting_asc, .sorting_desc:not(:last-child) {
+  position: relative;
+  &::after {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    content: " ";
+    background: url("../../assets/arovdown.png") no-repeat;
+  }
+}
+
+thead th:last-child {
+  &::after {
+    background: none;
+  }
+}
+
+.sorting_desc, .sorting_asc {
+  &::after {
+    background: url("../../assets/arovup.png") no-repeat;
+  }
 }
 

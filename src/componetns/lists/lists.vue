@@ -3,7 +3,7 @@
     <table id="table_id" class="display">
       <thead>
       <tr>
-        <th v-on:click="chengeArov()">{{numberCurrency}}<img src="../../assets/arovdown.png" alt=""></th>
+        <th>{{numberCurrency}}</th>
         <th>{{codСurrency}}</th>
         <th>{{nameСurrency}}</th>
         <th>{{valСurrency}}</th>
@@ -74,9 +74,6 @@
             }
         );
     });
-
-    const img = '../../assets/arovdown.png';
-
     export default {
         data() {
             return {
@@ -87,17 +84,6 @@
                 exchangeRate: "Курс к бел. рублю",
             }
         },
-        methods: {
-            chengeArov: function () {
-
-
-
-
-
-
-
-            },
-        }
     }
 </script>
 <style lang="scss">
