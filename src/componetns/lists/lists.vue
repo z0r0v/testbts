@@ -28,10 +28,11 @@
 <script>
     import * as $ from 'jquery';
     import * as dt from 'datatables.net';
+
     const url = 'https://cors-anywhere.herokuapp.com/https://www.cbr-xml-daily.ru/daily_json.js';
     const data = [];
     let i = 1;
-    const buttons =  "<button class='button-del'></button>" +
+    const buttons = "<button class='button-del'></button>" +
         "<button class='button-plus'></button>";
 
     const getCurses = (url) => {
@@ -79,8 +80,8 @@
             return {
                 numberCurrency: 'Номер строки',
                 codСurrency: 'Буквенный код валюты',
-                nameСurrency:'Наименование валюты',
-                valСurrency:"Количество единиц валюты",
+                nameСurrency: 'Наименование валюты',
+                valСurrency: "Количество единиц валюты",
                 exchangeRate: "Курс к бел. рублю",
             }
         },
@@ -88,7 +89,6 @@
 </script>
 <style lang="scss">
   @import 'lists.scss';
-
 
 
 </style>

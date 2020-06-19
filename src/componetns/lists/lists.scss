@@ -83,11 +83,14 @@
 }
 
 .sorting, .sorting_asc, .sorting_desc:not(:last-child) {
+  padding-right: 16px;
   position: relative;
   &::after {
     position: absolute;
     width: 30px;
     height: 30px;
+    top: 33px;
+    right: 0;
     content: " ";
     background: url("../../assets/arovdown.png") no-repeat;
   }
